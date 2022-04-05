@@ -440,7 +440,7 @@ parfor ff = 1:nHolos_to_work_on %ff = frame
     % Convert to class double
     holo = double(holo);
     
-    %% Normalise if necessary (see 'holoNorm.m'):
+    %% Normalise if necessary:
     if pRecon.preNormTF == 0
         % Subtract background
         sub = holo-bkgrnd;
@@ -454,9 +454,7 @@ parfor ff = 1:nHolos_to_work_on %ff = frame
     %% Initialise storage array for 3D reconstruction:
     reconArray = zeros(pRecon.nR,pRecon.nC,length(pRecon.dList));
     
-    %% Reconstruct using Angular Spectrum method (see 'ASprop.m' & variations)
-    % See also 'holoTransferFnAux.m' for where part of the Transfer
-    % Function comes from.
+    %% Reconstruct using Angular Spectrum method
     
     % Fourier transform of the hologram
     holoFT=fftshift(fft2(holoNorm));
